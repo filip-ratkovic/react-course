@@ -1,9 +1,13 @@
-function App() {
-  return (
-    <div className="App">
-     app
-    </div>
-  );
-}
+import React, { Component } from 'react'
+import ScoreApp from './Projects/ScoreApp/ScoreApp'
 
-export default App;
+export default class App extends Component {
+  
+  render() {
+    return (
+      <div className="app">
+      <ScoreApp/>
+      </div>
+    )
+  }
+}
