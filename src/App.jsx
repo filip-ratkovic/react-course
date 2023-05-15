@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import ToDo from './Projects/ToDo/ToDo'
+import Tasbeeh from './Projects/TasbeehCounter/Tasbeeh'
 
 export default class App extends Component {
   
   render() {
     return (
       <div className="app">
-      <ToDo/>
+        <Tasbeeh/>
       </div>
     )
   }
