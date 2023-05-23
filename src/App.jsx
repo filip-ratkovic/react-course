@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import Tasbeeh from './Projects/TasbeehCounter/Tasbeeh'
+import ToDo from './Projects/ToDo/ToDo'
+import Score from './Projects/Score/Score'
 
 export default class App extends Component {
   
   render() {
     return (
       <div className="app">
-        <Tasbeeh/>
+        <Score/>
       </div>
     )
   }
