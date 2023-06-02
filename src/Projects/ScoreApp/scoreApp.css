@@ -1,0 +1,24 @@
+.score-cont {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    gap: 100px;
+}
+
+.score-card {
+    background-color: aquamarine;
+    padding: 20px 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: aqua;
+    cursor: pointer;
+}
