@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Tasbeeh from './Projects/TasbeehCounter/Tasbeeh'
 
-export default class App extends Component {
-  
-  render() {
-    return (
-      <div className="app">
-      </div>
-    )
-  }
+function App() {
+  return (
+    <div>
+      <Tasbeeh/>
+    </div>
+  )
 }
+
+export default App
