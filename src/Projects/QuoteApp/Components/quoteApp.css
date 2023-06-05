@@ -1,0 +1,10 @@
+.quote-main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    gap: 50px;
+}
+
+.quote-card {
+    width: 300px;
+}
