@@ -8,3 +8,17 @@
 .quote-card {
     width: 300px;
 }
+
+.like-btn {
+    padding: 5px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border: solid 1px grey;
+}
+
+.liked {
+    background-color: red;
+    color: white;
+}
