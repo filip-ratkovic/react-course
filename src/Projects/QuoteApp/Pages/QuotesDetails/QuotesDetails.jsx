@@ -29,7 +29,9 @@ function QuotesDetails() {
   };
 
    const handleEdit = () => {
-
+      const updatedData = {
+        quoteAuthor: singleQuote.quoteAuthor
+      }
     fetch(`https://js-course-server.onrender.com/quotes/edit/${id}`, {
       method: "PATCH",
       headers: {
@@ -44,7 +46,12 @@ function QuotesDetails() {
     <div>
       <Link to={"/"}>Back to all quotes</Link>
       <div>
-        <h1>{singleQuote.quoteAuthor}</h1>
+      <input
+        type="text"
+        name="name"
+        value={singleQuote.quoteAuthor}
+        onChange={event => setSingleQuote({...singleQuote, quoteAuthor : event.target.value})}
+      />
         <h3>{singleQuote.quoteSource}</h3>
         <p>{singleQuote.quoteText}</p>
         <p>{singleQuote.likes}</p>
