@@ -44,7 +44,7 @@ function QuotesDetails() {
   };
   return (
     <div>
-      <Link to={"/"}>Back to all quotes</Link>
+      <Link to={"/quote"}>Back to all quotes</Link>
       <div>
       <input
         type="text"

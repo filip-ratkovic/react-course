@@ -14,6 +14,7 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
+      <h1>Login</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {
@@ -27,7 +28,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
-                navigate("/");
+                navigate("/quote");
               }
             });
         }}

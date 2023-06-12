@@ -4,13 +4,15 @@ import AllQuotes from "../Pages/AllQuotes/AllQuotes";
 import QuotesDetails from "../Pages/QuotesDetails/QuotesDetails";
 import "./quoteApp.css";
 import Login from "../Pages/Login/Login";
-import SignUp from "../Pages/Registration/SignUp";
+import SignUp from "../Pages/SignUp/SignUp";
+import Registration from "../Pages/Registration/Registration";
 
 function QuoteApp() {
   return (
     <div className="quote-main">
       <Routes>
-        <Route path={"/"} element={<AllQuotes />} />
+      <Route path={"/"} element={<Registration/>} />
+        <Route path={"/quote"} element={<AllQuotes />} />
         <Route path={"/quote/:id"} element={<QuotesDetails />} />
         <Route path={"/login"} element={<Login/>} />
         <Route path={"/signup"} element={<SignUp/>} />
