@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AddQuote from "../AddQuote/AddQuote";
 
 const URL = "https://js-course-server.onrender.com/quotes/get-all-quotes";
 
@@ -46,6 +47,8 @@ function AllQuotes() {
           </div>
         );
       })}
+
+      <AddQuote/>
     </div>
   );
 }

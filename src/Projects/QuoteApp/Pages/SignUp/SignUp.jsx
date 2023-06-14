@@ -33,7 +33,7 @@ function SignUp() {
             .then((res) => res.json())
             .then((data) => {
               if (data) {
-                navigate("/quote");
+                navigate("/login");
               }
             });
         }}
