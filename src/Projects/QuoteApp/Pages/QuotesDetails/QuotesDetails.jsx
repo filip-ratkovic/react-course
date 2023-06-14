@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../Components/quoteApp.css";
 const URL = "https://js-course-server.onrender.com/quotes/get-quote/";
 function QuotesDetails() {
@@ -7,13 +7,15 @@ function QuotesDetails() {
   const [liked, setLiked] = useState(false);
   const params = useParams();
   const id = params.id;
-
+  const navigate = useNavigate()
+  const token = localStorage.getItem('authToken');
   useEffect(() => {
     fetch(URL + id)
       .then((data) => data.json())
       .then((res) => setSingleQuote(res))
       .catch((err) => console.log(err));
   }, []);
+
   const handleLike = () => {
     setLiked(true);
 
@@ -21,6 +23,7 @@ function QuotesDetails() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: token
       },
     })
       .then((data) => data.json())
@@ -28,12 +31,12 @@ function QuotesDetails() {
       .catch((err) => console.log(err));
   };
 
-   const handleEdit = () => {
-      const updatedData = {
-        quoteAuthor: singleQuote.quoteAuthor
-      }
-    fetch(`https://js-course-server.onrender.com/quotes/edit/${id}`, {
-      method: "PATCH",
+  const handleDelete = () => {
+
+    navigate("/quote");
+
+    fetch(`https://js-course-server.onrender.com/quotes/delete/${id}`, {
+      method: "DEL",
       headers: {
         "Content-Type": "application/json",
       },
@@ -42,6 +45,8 @@ function QuotesDetails() {
       .then((res) => setSingleQuote(res))
       .catch((err) => console.log(err));
   };
+
+  
   return (
     <div>
       <Link to={"/quote"}>Back to all quotes</Link>
@@ -62,11 +67,12 @@ function QuotesDetails() {
           33
         </button>
 
-        <button
-          onClick={handleEdit}
+       <Link to={`/quote/${id}/edit`}> <button
         >
-          edit
-        </button>
+          edit quote
+        </button></Link>
+
+        <button onClick={handleDelete}>delete</button>
       </div>
     </div>
   );

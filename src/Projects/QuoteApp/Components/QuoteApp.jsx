@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Registration from "../Pages/Registration/Registration";
 import AddQuote from "../Pages/AddQuote/AddQuote";
+import EditQuote from "../Pages/Edit/EditQuote";
 
 function QuoteApp() {
   return (
@@ -18,6 +19,8 @@ function QuoteApp() {
         <Route path={"/quote/:id"} element={<QuotesDetails />} />
         <Route path={"/login"} element={<Login/>} />
         <Route path={"/signup"} element={<SignUp/>} />
+        <Route path={"/quote/:id/edit"} element={<EditQuote/>} />
+
       </Routes>
     </div>
   );

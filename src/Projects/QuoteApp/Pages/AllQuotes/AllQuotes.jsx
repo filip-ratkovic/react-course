@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import AddQuote from "../AddQuote/AddQuote";
+import { Link, useNavigate } from "react-router-dom";
+
+import "./allQuotes.css"
 
 const URL = "https://js-course-server.onrender.com/quotes/get-all-quotes";
 
 function AllQuotes() {
   const [quotesData, setQuotesData] = useState([]);
-  const [like, setLike] = useState();
-  const [liked, setLiked] = useState(false);
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(URL)
@@ -16,21 +17,6 @@ function AllQuotes() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(quotesData);
-
-  // const handleLike = () => {
-
-  //   fetch(`https://js-course-server.onrender.com/quotes/like/${quotesData._id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     // body: JSON.stringify({likes: quotesData.likes + 1})
-  //   })
-  //   .then((data) => data.json())
-  //   .then((res) => setQuotesData(res))
-  //   .catch((err) => console.log(err))
-  // }
 
   return (
     <div className="quote-main">
@@ -48,7 +34,8 @@ function AllQuotes() {
         );
       })}
 
-      <AddQuote/>
+    <button className="add-quote-btn" onClick={(() => {navigate("/add")})}>+</button>
+
     </div>
   );
 }

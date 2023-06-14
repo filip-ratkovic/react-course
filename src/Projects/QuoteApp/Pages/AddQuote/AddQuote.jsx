@@ -1,46 +1,71 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const loginSchema = yup.object({
-  text: yup.string().required().min(6).max(200),
-  author: yup.string().required(),
-  source: yup.string().required(),
+const addQuoteSchema = yup.object({
+  quoteText: yup.string().required().min(6).max(100),
+  quoteAuthor: yup.string().required().min(4).max(100),
+  quoteSource: yup.string().required().min(4).max(200),
   category: yup.string().required(),
 });
 
-function AddQuote() {
+const AddQuote = () => {
   const [categories, setCategories] = useState([]);
-  const token = ''
+
+  const navigate = useNavigate();
+  const token = localStorage.getItem("authToken");
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/category/get-all")
-      .then((data) => data.json())
-      .then((res) => setCategories(res))
-      .catch((err) => console.log(err));
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
   }, []);
 
+  const addQuote = (values) => {
+    fetch("https://js-course-server.onrender.com/quotes/add-quote", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          alert(data.message);
+        } else {
+          alert("Uspesno");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    navigate("/quote");
+  };
+
   if (!token) {
-    return <Navigate to={'/'} replace={true}/>
+    return <Navigate to={"/login"} replace={true} />;
   }
+
   return (
-    <div>
-      <h1>Add quote</h1>
+    <div className="add-quote-wrapper">
+          <button className="" onClick={(() => {navigate("/quote")})}>Back</button>
       <Formik
-        initialValues={{ text: "", author: "", source: "", category: "" }}
-        onSubmit={(values, actions) => {
-          fetch("https://js-course-server.onrender.com/quotes/add-quote", {
-            method: "POST",
-            body: JSON.stringify(values),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((res) => res.json())
-            .then((data) => {});
+        initialValues={{
+          quoteText: "",
+          quoteAuthor: "",
+          quoteSource: "",
+          category: "",
         }}
-        validationSchema={loginSchema}
+        validationSchema={addQuoteSchema}
+        onSubmit={(values, actions) => {
+          addQuote(values);
+          // actions.resetForm();
+        }}
       >
         {({
           values,
@@ -51,79 +76,86 @@ function AddQuote() {
           handleSubmit,
         }) => (
           <div>
-            <button
-              onClick={() => {
-                console.log(values, "values");
-                console.log(errors, "errors");
-                console.log(touched, "touched");
-              }}
-            >
-              Console log states
-            </button>
 
-            <div>
+            <div className="add-quote-card">
+              <p>Author</p>
               <input
                 type="text"
-                name="quote"
+                name="quoteAuthor"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.quote}
-                placeholder="enter quote"
+                value={values.quoteAuthor}
+                className={`${errors.quoteAuthor ? "input-error" : ""}`}
               />
               <p className="error-message">
-                {errors.quote && touched.quote && errors.quote}
+                {errors.quoteAuthor &&
+                  touched.quoteAuthor &&
+                  errors.quoteAuthor}
               </p>
             </div>
 
-            <div>
-              <input
-                type="text"
-                name="author"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.author}
-                placeholder="enter author name"
-              />
+            <div className="add-quote-card">
+              <p>Text</p>
+
+              <textarea name="quoteText" id="" cols="25" rows="5"
+               className={`${errors.quoteText ? "input-error" : ""}`}
+               type="text"
+               onChange={handleChange}
+               onBlur={handleBlur}
+               value={values.quoteText}
+              ></textarea>
               <p className="error-message">
-                {errors.author && touched.author && errors.author}
+                {errors.quoteText && touched.quoteText && errors.quoteText}
               </p>
             </div>
 
-            <div>
+            <div className="add-quote-card">
+              <p>Source</p>
               <input
                 type="text"
-                name="source"
+                name="quoteSource"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.source}
-                placeholder="enter source"
+                value={values.quoteSource}
+                className={`${errors.quoteSource ? "input-error" : ""}`}
               />
               <p className="error-message">
-                {errors.source && touched.source && errors.source}
+                {errors.quoteSource &&
+                  touched.quoteSource &&
+                  errors.quoteSource}
               </p>
             </div>
 
-          
-
-            <div>
-              
-              <select name="category" id="">
-                {categories.map((category) => {
-                     <option value={category}>{category}</option>
-                })}
+            <div className="add-quote-card">
+              <p>Category</p>
+              <select
+                name="category"
+                onChange={handleChange}
+                value={values.category}
+                className={`${errors.category ? "input-error" : ""}`}
+              >
+                <option value={""} disabled={true}>
+                  -- Izaberi kategoriju --
+                </option>
+                {categories.map((item, index) => (
+                  <option key={index} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
               <p className="error-message">
                 {errors.category && touched.category && errors.category}
               </p>
             </div>
+
             <button onClick={handleSubmit} type="button">
-              add quote
+              Submit
             </button>
           </div>
         )}
       </Formik>
     </div>
   );
-}
+};
 
 export default AddQuote;

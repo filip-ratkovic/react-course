@@ -1,3 +1,33 @@
+:root {
+    /* COLORS  */
+    --black: #141414;
+    --white: #f2f2f2;
+    --green: #58c8ab;
+    --black2: #0b0b0b;
+    --dark-green: #1c322f;
+    --dark-grey:#252525;
+    --grey:#636267;
+    --light-grey:#cecccd;
+
+    /* GRADIENT */
+
+    --lg-dark:linear-gradient(90deg,#141414  0% , #141414  65% ,#1c3833 100%);
+    --lg-light:linear-gradient(90deg,#1c3833 0% , #1c3833 65% , #141414  100%);
+    
+    /* SHADOWS */
+
+    --shadow-black: 0 1px 4px rgba(0, 0, 0, 0.3);
+    --shadow-green:  0 2px 6px rgba(28, 56, 51, 0.6);
+    --shadow-white:  0 6px 10px rgba(121, 117, 117, 0.3);
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 .quote-main {
     width: 100vw;
     max-width: 100vw;
@@ -8,7 +38,6 @@
     flex-wrap: wrap;
     padding: 20px;
     background-color: #fcfcfc;
-    overflow: hidden;
 }
 
 .quote-card {

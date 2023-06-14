@@ -28,6 +28,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.token) {
+                localStorage.setItem("authToken", data.token);
                 navigate("/quote");
               }
             });
