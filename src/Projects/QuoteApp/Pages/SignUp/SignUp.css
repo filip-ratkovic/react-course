@@ -1,0 +1,37 @@
+.sign-up-wrapper {
+    max-width: 90%;
+    width: 400px;
+    padding: 10px;
+    margin: 40px 10px;
+    background-image: var(--lg-light);
+    color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputs-wraper {
+    width: 100%;
+}
+.input-wrapper {
+    width: 100%;
+    margin-block: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input-wrapper input {
+    width: 90%;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    color: var(--black);
+    border-radius:8px;
+    box-shadow: var(--shadow-white);
+}
+
+.input-wrapper input:hover {
+    background-color: var(--light-grey);
+}

@@ -74,7 +74,7 @@ const [categories, setCategories] = useState([])
       <button
         className=""
         onClick={() => {
-          navigate("/quote");
+          navigate(`/quote/${params.id}`);
         }}
       >
         Back

@@ -1,27 +1,32 @@
 import React from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./signUp.css"
 
 const loginSchema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(6).max(50),
   confirmPassword: yup.string().required().min(6).max(50),
-  fullName: yup.string().required().min(2)
-//   .matches(/^([a-zA-Z]{2,}\\'?-?[a-zA-Z]{2,})$/, 
-//   'Input shoud look: Test Test')
-
+  fullName: yup.string().required().min(2),
+  //   .matches(/^([a-zA-Z]{2,}\\'?-?[a-zA-Z]{2,})$/,
+  //   'Input shoud look: Test Test')
 });
-function SignUp() {
 
-    const navigate = useNavigate();
+function SignUp() {
+  const navigate = useNavigate();
 
   return (
-    <div className="signUp-wrapper">
-            <h1>Sign up</h1>
-
-<Formik
-        initialValues={{ email: "", password: "", confirmPassword: "", fullName: ""}}
+    <div className="sign-up-wrapper">
+      <h1 className="header">Sign up</h1>
+      <Formik
+      className="formik"
+        initialValues={{
+          email: "",
+          password: "",
+          confirmPassword: "",
+          fullName: "",
+        }}
         onSubmit={(values, actions) => {
           fetch("https://js-course-server.onrender.com/user/signup", {
             method: "POST",
@@ -38,26 +43,16 @@ function SignUp() {
             });
         }}
         validationSchema={loginSchema}
-      
       >
         {({
-          values, 
-          errors, 
+          values,
+          errors,
           touched,
           handleChange,
           handleBlur,
           handleSubmit,
         }) => (
-          <div>
-            <button
-              onClick={() => {
-                console.log(values, "values");
-                console.log(errors, "errors");
-                console.log(touched, "touched");
-              }}
-            >
-              Console log states
-            </button>
+          <div className="inputs-wraper">
             <div className="input-wrapper">
               <input
                 type="text"
@@ -71,7 +66,7 @@ function SignUp() {
                 {errors.fullName && touched.fullName && errors.fullName}
               </p>
             </div>
-            
+
             <div className="input-wrapper">
               <input
                 type="email"
@@ -91,7 +86,6 @@ function SignUp() {
                 type="password"
                 name="password"
                 placeholder="Enter password"
-
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -111,18 +105,24 @@ function SignUp() {
                 value={values.confirmPassword}
               />
               <p className="error-message">
-                {errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}
+                {errors.confirmPassword &&
+                  touched.confirmPassword &&
+                  errors.confirmPassword}
               </p>
             </div>
 
             <button onClick={handleSubmit} type="button">
               Submit
             </button>
+                  <div>
+                  <Link to={'/login'}>You have account ?</Link>
+
+                  </div>
           </div>
         )}
       </Formik>
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

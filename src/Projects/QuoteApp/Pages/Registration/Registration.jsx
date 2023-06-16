@@ -6,9 +6,10 @@ import SignUp from '../SignUp/SignUp'
 function Registration() {
   return (
     <div>
-        <SignUp/>
+        <SignUp>
+          
+        </SignUp>
 
-        <Link to={'/login'}>You have account ?</Link>
     </div>
   )
 }
