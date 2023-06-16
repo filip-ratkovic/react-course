@@ -33,17 +33,19 @@ function QuotesDetails() {
 
   const handleDelete = () => {
 
-    navigate("/quote");
 
     fetch(`https://js-course-server.onrender.com/quotes/delete/${id}`, {
-      method: "DEL",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: token,
       },
     })
       .then((data) => data.json())
       .then((res) => setSingleQuote(res))
       .catch((err) => console.log(err));
+      navigate("/quote");
+
   };
 
   
@@ -62,7 +64,10 @@ function QuotesDetails() {
         <p>{singleQuote.likes}</p>
         <button
           className={`like-btn ${liked ? "liked" : ""}`}
-          onClick={handleLike}
+          onClick={()=> {
+              // TODO  DISLIKE
+              liked ? console.log('DISLIKE') : handleLike()
+          }}
         >
           33
         </button>
