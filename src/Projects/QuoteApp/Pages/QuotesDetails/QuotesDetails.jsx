@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "../../Components/quoteApp.css";
+import "./quotesDetails.css"
 const URL = "https://js-course-server.onrender.com/quotes/get-quote/";
 function QuotesDetails() {
   const [singleQuote, setSingleQuote] = useState([]);
@@ -62,15 +62,14 @@ function QuotesDetails() {
         <h3>{singleQuote.quoteSource}</h3>
         <p>{singleQuote.quoteText}</p>
         <p>{singleQuote.likes}</p>
-        <button
-          className={`like-btn ${liked ? "liked" : ""}`}
+        <div
+          className={`heart ${liked ? "liked" : ""}`}
           onClick={()=> {
               // TODO  DISLIKE
               liked ? console.log('DISLIKE') : handleLike()
           }}
         >
-          33
-        </button>
+        </div>
 
        <Link to={`/quote/${id}/edit`}> <button
         >

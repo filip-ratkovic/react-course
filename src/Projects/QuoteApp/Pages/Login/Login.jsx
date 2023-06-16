@@ -1,19 +1,28 @@
 import React from "react";
-import "./Login.css";
+// import "./Login.css";
+import "../SignUp/signUp.css"
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const loginSchema = yup.object({
   email: yup.string().required().email(),
   password: yup.string().required().min(6).max(50)
 });
 
+const token = localStorage.getItem('authToken');
+
 const Login = () => {
   const navigate = useNavigate();
 
+
+  if(token) {
+    const decoded = jwtDecode(token);
+    console.log(decoded)
+  }
   return (
-    <div className="login-wrapper">
+    <div className="sign-up-wrapper">
       <h1>Login</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -44,35 +53,29 @@ const Login = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <div>
-            <button
-              onClick={() => {
-                console.log(values, "values");
-                console.log(errors, "errors");
-                console.log(touched, "touched");
-              }}
-            >
-              Console log states
-            </button>
-            <div>
+          <div className="inputs-wrapper">
+            <div className="input-wrapper">
               <input
                 type="email"
                 name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                placeholder="Enter email"
               />
               <p className="error-message">
                 {errors.email && touched.email && errors.email}
               </p>
             </div>
-            <div>
+
+            <div className="input-wrapper">
               <input
                 type="password"
                 name="password"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                placeholder="Enter password"
               />
               <p className="error-message">
                 {errors.password && touched.password && errors.password}

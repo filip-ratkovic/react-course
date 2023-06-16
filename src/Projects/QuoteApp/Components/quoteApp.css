@@ -29,16 +29,7 @@
     font-family: "Helvetica Neue",Helvetica,Arial
 }
 
-button {
-    width: 200px;
-    padding: 10px 20px;
-    border:none;
-    outline: none;
-    border-radius: 8px;
-    box-shadow: var(--shadow-white);
-    cursor: pointer;
-    margin: 20px;
-}
+
 .header {
     font-size: 34px;
     margin-block: 20px;
@@ -48,6 +39,10 @@ button {
     margin-top: 5px;
     letter-spacing: 2px;
     font-size: 14px;
+}
+
+a {
+    color: #0984f8;
 }
 
 .quote-main {
@@ -65,8 +60,17 @@ button {
 
 .quote-card {
     width: 300px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    max-width: 90%;
+    padding: 10px;
+    margin: 40px 10px;
+    background-image: var(--lg-light);
+    color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .like-btn {

@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Loading from "../Loading/Loading";
 import "./allQuotes.css"
 
 const URL = "https://js-course-server.onrender.com/quotes/get-all-quotes";
 
 function AllQuotes() {
   const [quotesData, setQuotesData] = useState([]);
+  const [loading, setLoading] = useState(true)
   
   const navigate = useNavigate()
 
   useEffect(() => {
     fetch(URL)
       .then((data) => data.json())
-      .then((res) => setQuotesData(res))
+      .then((res) =>
+       setQuotesData(res),
+        setLoading(false)
+      )
       .catch((err) => console.log(err));
+
   }, []);
 
-
+  if(loading) {
+    return <Loading/>
+  }
   return (
     <div className="quote-main">
       {quotesData.map((quote) => {

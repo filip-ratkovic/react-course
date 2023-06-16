@@ -11,8 +11,11 @@
     flex-direction: column;
     align-items: center;
 }
-.inputs-wraper {
+.inputs-wrapper {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .input-wrapper {
     width: 100%;
@@ -34,4 +37,15 @@
 
 .input-wrapper input:hover {
     background-color: var(--light-grey);
+}
+
+button {
+    width: 200px;
+    padding: 10px 20px;
+    border:none;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow-white);
+    cursor: pointer;
+    margin: 20px;
 }

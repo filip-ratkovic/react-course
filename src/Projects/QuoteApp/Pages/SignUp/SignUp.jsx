@@ -52,7 +52,7 @@ function SignUp() {
           handleBlur,
           handleSubmit,
         }) => (
-          <div className="inputs-wraper">
+          <div className="inputs-wrapper">
             <div className="input-wrapper">
               <input
                 type="text"

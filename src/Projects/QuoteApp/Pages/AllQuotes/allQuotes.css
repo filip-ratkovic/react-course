@@ -4,11 +4,16 @@
     right: 20px;
     z-index: 11;
     font-size: 44px;
-    background-color: red;
+    background-color: var(--light-grey);
+    color: var(--black2);
     border-radius: 50%;
     outline: none;
     border: none;
     width: 44px;
     height: 44px;
     cursor: pointer;
+}
+
+.quote-card {
+    
 }
