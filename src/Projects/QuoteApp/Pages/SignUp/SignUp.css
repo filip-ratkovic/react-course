@@ -39,7 +39,7 @@
     background-color: var(--light-grey);
 }
 
-button {
+.inputs-wrapper button {
     width: 200px;
     padding: 10px 20px;
     border:none;
@@ -48,4 +48,8 @@ button {
     box-shadow: var(--shadow-white);
     cursor: pointer;
     margin: 20px;
+}
+
+.inputs-wrapper button:hover {
+    background-color: var(--light-grey);
 }

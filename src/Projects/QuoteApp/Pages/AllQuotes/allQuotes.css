@@ -7,13 +7,57 @@
     background-color: var(--light-grey);
     color: var(--black2);
     border-radius: 50%;
-    outline: none;
-    border: none;
     width: 44px;
     height: 44px;
     cursor: pointer;
 }
 
 .quote-card {
-    
+    width: 350px;
+    max-width: 90%;
+    min-height: 350px;
+    padding: 10px;
+    margin: 30px 10px;
+    background-image: var(--lg-light);
+    color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.quote-card h1 {
+    font-size: 28px;
+}
+
+
+.quote-card h5 {
+    color:var(--light-grey)
+}
+
+.quote-text {
+    display: flex;
+}
+
+.quote-navodnici {
+    width: 10%;
+}
+
+
+.more-details-btn {
+    width: 200px;
+    padding: 10px 20px;
+    border:none;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow-white);
+    cursor: pointer;
+    margin: 20px;
+}
+
+.more-details-btn:hover {
+    background-color: var(--light-grey);
 }

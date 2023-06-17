@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const addQuoteSchema = yup.object({
-  quoteText: yup.string().required().min(6).max(100),
+  quoteText: yup.string().required().min(6).max(200),
   quoteAuthor: yup.string().required().min(4).max(100),
-  quoteSource: yup.string().required().min(4).max(200),
+  quoteSource: yup.string().required().min(4).max(100),
   category: yup.string().required(),
 });
 

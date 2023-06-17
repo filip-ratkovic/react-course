@@ -29,6 +29,12 @@
     font-family: "Helvetica Neue",Helvetica,Arial
 }
 
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 
 .header {
     font-size: 34px;
@@ -48,41 +54,13 @@ a {
 .quote-main {
     width: 100vw;
     max-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-evenly;
-    gap: 50px;
+    gap: 30px;
     flex-wrap: wrap;
     padding: 20px;
     background-color: var(--black);
     color: var(--white);
 }
 
-.quote-card {
-    width: 300px;
-    max-width: 90%;
-    padding: 10px;
-    margin: 40px 10px;
-    background-image: var(--lg-light);
-    color: var(--white);
-    border-radius: 8px;
-    box-shadow: var(--shadow-green);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.like-btn {
-    padding: 5px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border: solid 1px grey;
-}
-
-.liked {
-    background-color: red;
-    color: white;
-}
