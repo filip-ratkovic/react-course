@@ -1,9 +1,9 @@
 import "./allQuotes.css"
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDuotone, faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
+import {  faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 
 const URL = "https://js-course-server.onrender.com/quotes/get-all-quotes";
 

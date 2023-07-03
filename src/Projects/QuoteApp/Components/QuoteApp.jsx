@@ -8,6 +8,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Registration from "../Pages/Registration/Registration";
 import AddQuote from "../Pages/AddQuote/AddQuote";
 import EditQuote from "../Pages/Edit/EditQuote";
+import Favorites from "../Pages/Favorites/Favorites";
 
 function QuoteApp() {
   return (
@@ -20,6 +21,7 @@ function QuoteApp() {
         <Route path={"/login"} element={<Login/>} />
         <Route path={"/signup"} element={<SignUp/>} />
         <Route path={"/quote/:id/edit"} element={<EditQuote/>} />
+        <Route  path={"/favorites"} element={<Favorites/>}/>
 
       </Routes>
     </div>

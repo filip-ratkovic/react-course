@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./quotesDetails.css"
+import { useDispatch, useSelector } from "react-redux";
+import { quoteSlice } from "../../../../store/quoteSlice";
+import jwtDecode from "jwt-decode";
+
+
 const URL = "https://js-course-server.onrender.com/quotes/get-quote/";
+
+
 function QuotesDetails() {
   const [singleQuote, setSingleQuote] = useState([]);
   const [liked, setLiked] = useState(false);
@@ -9,6 +16,8 @@ function QuotesDetails() {
   const id = params.id;
   const navigate = useNavigate()
   const token = localStorage.getItem('authToken');
+  const dispach = useDispatch()
+
   useEffect(() => {
     fetch(URL + id)
       .then((data) => data.json())
@@ -77,6 +86,13 @@ function QuotesDetails() {
         </button></Link>
 
         <button onClick={handleDelete}>delete</button>
+        <div>
+          <button onClick={()=> {
+              const decoded = jwtDecode(token);
+              dispach(quoteSlice.actions.setData(decoded));
+            navigate("/favorites")
+          }}>Add to favorites</button>
+        </div>
       </div>
     </div>
   );
